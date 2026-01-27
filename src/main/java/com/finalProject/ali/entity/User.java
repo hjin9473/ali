@@ -53,7 +53,7 @@ public class User {
         if (this.status == null) this.status = "ACTIVE";
     }
 
-    // 정보 수정용 메소드 (JPA는 Setter 대신 이렇게 씁니다)
+    // 정보 수정용
     public void updateInfo(String email, String name, String phone, String address, String profileImg) {
         this.email = email;
         this.name = name;

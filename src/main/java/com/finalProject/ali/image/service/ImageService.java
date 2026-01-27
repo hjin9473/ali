@@ -14,7 +14,7 @@ public class ImageService {
     @Value("${file.upload.path}")
     private String uploadPath;
 
-    // [추가] 경로 끝에 '/'가 없으면 붙여주는 안전장치 (리눅스 경로 에러 방지용)
+    // 경로 끝에 '/'가 없으면 붙여주는 안전장치 (리눅스 경로 에러 방지용)
     private String getUploadPath() {
         return uploadPath.endsWith("/") ? uploadPath : uploadPath + "/";
     }
@@ -22,12 +22,12 @@ public class ImageService {
     public String uploadImage(MultipartFile file, String folderName) {
         if (file == null || file.isEmpty()) return null;
 
-        // 1. 경로 생성 (getUploadPath 사용으로 안전성 강화)
+        // 1. 경로 생성
         String fullPath = getUploadPath() + folderName + "/";
         File folder = new File(fullPath);
         if (!folder.exists()) folder.mkdirs();
 
-        // 2. UUID 파일명 생성 (기존 방식 유지)
+        // 2. UUID 파일명 생성
         String originalName = file.getOriginalFilename();
         String extension = originalName != null && originalName.contains(".")
                 ? originalName.substring(originalName.lastIndexOf("."))
@@ -37,11 +37,10 @@ public class ImageService {
         File targetFile = new File(fullPath + savedName);
 
         try {
-            // [수정] file.transferTo(...) 대신 Thumbnailator 사용
-            // 메모리에서 이미지를 읽어 리사이징 후 저장합니다.
+            // 메모리에서 이미지를 읽어 리사이징 후 저장
             Thumbnails.of(file.getInputStream())
-                    .size(800, 800)        // 최대 크기 800x800 (비율 유지됨)
-                    .outputQuality(0.8)    // 화질 80% (용량 대폭 감소)
+                    .size(800, 800)        // 최대 크기 800x800
+                    .outputQuality(0.8)    // 화질 80%
                     .toFile(targetFile);   // 저장
 
             // 성공 시 경로 반환
@@ -57,7 +56,7 @@ public class ImageService {
     public void deleteActualFile(String webPath) {
         if (webPath == null || webPath.isEmpty()) return;
 
-        // 웹 경로를 물리 경로로 변환 (getUploadPath 사용)
+        // 웹 경로를 물리 경로로 변환
         String relativePath = webPath.replace("/upload/", "");
         File file = new File(getUploadPath() + relativePath);
 

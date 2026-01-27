@@ -28,7 +28,7 @@ public interface UserDAO {
     String findIdByPhone(@Param("name") String name, @Param("phone") String phone);
     String findIdByEmail(@Param("name") String name, @Param("email") String email);
 
-    // 만료되지 않은 토큰이 있는지 확인하고 해당 유저의 ID를 가져옵니다.
+    // 만료되지 않은 토큰이 있는지 확인하고 해당 유저의 ID를 가져옴
     String getUserIdByToken(@Param("token") String token, @Param("now") java.time.LocalDateTime now);
 
     // 비밀번호 변경 후 토큰 즉시삭제

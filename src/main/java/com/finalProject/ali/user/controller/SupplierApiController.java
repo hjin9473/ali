@@ -54,7 +54,7 @@ public class SupplierApiController {
 
         // 2. 비교 로직
         if (savedCode != null && savedCode.equals(code)) {
-            // 인증 성공 시 세션에 마킹 (필요시 사용)
+            // 인증 성공 시 세션에 마킹
             session.setAttribute("isBizVerified", true);
             return ResponseEntity.ok("success");
         } else {

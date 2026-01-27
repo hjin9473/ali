@@ -83,7 +83,6 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
         }
 
         // OAuth2User 객체를 생성할 때 DB 권한을 넣어서 반환
-        // (userNameAttributeName은 'sub', 'id' 등 공급자마다 다른 PK 키값)
         String userNameAttributeName = userRequest.getClientRegistration()
                 .getProviderDetails().getUserInfoEndpoint().getUserNameAttributeName();
 

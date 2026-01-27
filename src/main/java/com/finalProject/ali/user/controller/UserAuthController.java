@@ -55,7 +55,6 @@ public class UserAuthController {
         return ResponseEntity.ok("회원가입 성공");
     }
 
-    // [로그인] DTO 변경 적용
     @PostMapping("/login")
     @ResponseBody
     public ResponseEntity<?> login(@RequestBody LoginRequestDTO loginRequest, HttpSession session) {
@@ -81,7 +80,7 @@ public class UserAuthController {
             Map<String, String> response = new java.util.HashMap<>();
             response.put("status", "success");
 
-            // 역할 확인 로직 (기존 유지)
+            // 역할 확인 로직
             String mainRole = "ROLE_USER";
             if (checkUser.getRoles() != null && !checkUser.getRoles().isEmpty()) {
                 if (checkUser.getRoles().contains("ROLE_ADMIN")) mainRole = "ROLE_ADMIN";

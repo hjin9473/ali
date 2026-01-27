@@ -29,11 +29,11 @@ public class AdminController {
     @Autowired
     private QnaRepository qnaRepository;
 
-    // ✅ 대시보드 페이지 (통계 + 차트 통합)
+    // 대시보드 페이지 (통계 + 차트 통합)
     @GetMapping("/adminpage")
     public String adminpage(Model model) {
 
-        // 1. [기존 기능] 상단 통계 카드 데이터 (dashboard)
+        // 1. 상단 통계 카드 데이터 (dashboard)
         AdminDashboardDTO dashboard = AdminDashboardDTO.builder()
                 .totalUsers(userDAO.countAllUsers())
                 .todayUsers(userDAO.countTodayUsers())
@@ -62,8 +62,6 @@ public class AdminController {
 
         return "admin/adminpage";
     }
-
-    // --- 아래는 기존 기능 유지 ---
 
     @GetMapping("/supplier/list")
     public String supplierList(Model model) {

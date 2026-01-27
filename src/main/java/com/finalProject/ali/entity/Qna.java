@@ -35,7 +35,6 @@ public class Qna {
     @Builder.Default
     private String status = "WAITING";
 
-    // --- 공통 영역 ---
     @Column(updatable = false)
     private LocalDateTime createdAt;
 
@@ -44,7 +43,7 @@ public class Qna {
         this.createdAt = LocalDateTime.now();
     }
 
-    // ✅ 관리자 답변 등록용 메소드 (Setter 대신 사용)
+    // 관리자 답변 등록용 메소드 (Setter 대신 사용)
     public void registerAnswer(String answer) {
         this.answer = answer;
         this.answeredAt = LocalDateTime.now();

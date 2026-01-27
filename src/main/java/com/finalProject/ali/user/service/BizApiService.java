@@ -12,7 +12,7 @@ import java.net.URL;
 @Service
 public class BizApiService {
 
-    // 공공데이터포털에서 발급받은 Decoding 인증키를 넣으세요
+    // 공공데이터포털에서 발급받은 Decoding 인증키
     private final String serviceKey = "2a8d2cd12e7fad9b60fdb599dc8983fe8588f388b9dfee0494611ea3440fca60";
 
     public boolean verifyBusinessNumber(String b_no) {
