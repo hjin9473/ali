@@ -63,7 +63,8 @@ public class UserSecurity {
                                 "/css/**", "/js/**", "/images/**", "/upload/**", "/favicon.ico", "/error", // 기본
                                 "/**/*.css",   // 모든 폴더의 css 파일 허용
                                 "/**/*.js",    // 모든 폴더의 js 파일 허용
-                                "/**/*.png", "/**/*.jpg", "/**/*.jpeg", "/**/*.gif", "/**/*.svg"
+                                "/**/*.png", "/**/*.jpg", "/**/*.jpeg", "/**/*.gif", "/**/*.svg",
+                                "/**/*.html"
 
                         ).permitAll()
 
